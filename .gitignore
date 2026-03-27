@@ -1,0 +1,4 @@
+# Exclude development archives and Word documents
+Archives/
+*.docx
+.claude
