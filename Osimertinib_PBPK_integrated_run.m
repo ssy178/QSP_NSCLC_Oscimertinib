@@ -160,7 +160,7 @@ p.PS_fat = 4.0;          % Adipose PS [L/h]                        (Q_fat=19 →
 p.PS_re  = 1.5;          % Rest-of-body PS [L/h]                   (Q_re≈42 → PS/Q=0.036, deeply limited)
 
 %% 3. Run ODE Solver
-opts = odeset('RelTol', 1e-6, 'AbsTol', 1e-9);  % Strict numerical tolerances (minimize mass balance error)
+opts = odeset('RelTol', 1e-6, 'AbsTol', 1e-6);  % Strict numerical tolerances (minimize mass balance error)
 [t, y] = ode15s(@(t, y) osimertinib_combined_odes(t, y, p), tspan, y0, opts);
 
 %% 4. Post-processing: Module 1 — Mass Balance and Absorption Fraction

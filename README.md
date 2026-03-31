@@ -2,7 +2,6 @@
 
 A mechanistic, whole-body physiologically based pharmacokinetic (PBPK) model for osimertinib (AZD9291, Tagrisso®), integrating a 3-compartment gastrointestinal (GI) absorption module (Module 1) with a 15-compartment systemic distribution module (Module 2). The model describes oral drug absorption, first-pass metabolism, and tissue distribution across 24 coupled ordinary differential equations (ODEs), and is implemented in MATLAB.
 
-> **Intended audience:** Researchers in PBPK/QSP modelling, clinical pharmacology, and oncology pharmacokinetics. The model is calibrated to clinical osimertinib PK data but can be adapted to other highly lipophilic, orally administered compounds with similar physicochemical properties.
 
 ---
 
@@ -58,12 +57,12 @@ Key processes:
 - Transit from small intestine to colon, and fecal excretion
 
 ### Module 2 — Systemic PBPK (15 state variables)
-A permeability-surface area (PS)-limited whole-body PBPK model. Slow-equilibrating tissues (muscle, adipose, rest-of-body) are represented as two-subcompartment structures (vascular + tissue), enabling realistic simulation of the large apparent volume of distribution (Vd,ss ~840 L) and the long terminal half-life (~48–60 h) characteristic of osimertinib.
+A permeability-surface area (PS)-limited whole-body PBPK model. Slow-equilibrating tissues (muscle, adipose, rest-of-body) are represented enabling realistic simulation of the large apparent volume of distribution (Vd,ss ~840 L) and the long terminal half-life (~48–60 h) characteristic of osimertinib.
 
 Key processes:
 - Well-stirred hepatic clearance model
 - Renal clearance (GFR-driven filtration + active secretion)
-- Blood–brain barrier (BBB) efflux (P-gp/BCRP-mediated)
+- Blood–brain barrier (BBB) efflux (P-gp-mediated)
 - Tumour vascular and extravascular compartments with drug internalization
 - PS-limited distribution into muscle, adipose, and rest-of-body
 
@@ -172,8 +171,6 @@ QSP_NSCLC_Oscimertinib/
 │   ├── Figure-1.png                    # GI absorption dynamics (Module 1, mass balance)
 │   ├── Figure-2.png                    # Gut wall diagnostics (A_gw, absorption flux)
 │   └── Figure-3.png                    # Whole-body PBPK (all 15 systemic compartments)
-│
-└── Archives/                           # Previous model versions and development files
 ```
 
 **Key files:**
@@ -215,7 +212,7 @@ The following figures were generated using default parameters (80 mg oral dose, 
 
 | Panel | Content | Key Observation |
 |-------|---------|-----------------|
-| Top | Gut wall drug amount A_gw(t) | Peak at T_peak = 2.0 h, A_gw,max = 18 μmol. The smooth, physiologically shaped profile confirms that the dynamic ODE formulation accurately replaces empirical gamma-function approximations. |
+| Top | Gut wall drug amount A_gw(t) | Peak at T_peak = 2.0 h, A_gw,max = 18 μmol.|
 | Middle | Absorption flux into portal vein R_abs(t) = Q_pv · f_u,gw · A_gw / V_gw | Peak absorption rate R_max = 27 μmol/h at T_peak = 2.0 h, rapidly declining as gut wall drug depletes. |
 | Bottom | Cumulative portal absorption (dual y-axis: μmol and %) | Final cumulative F_abs ≈ 74%. The dashed line marks the clinical reference of ~78%. |
 
@@ -309,7 +306,7 @@ Running the script prints two summary blocks to the MATLAB console. Below is an 
 
 If you use or adapt this model in published work, please cite the following:
 
-> Shin S. (2025). Osimertinib Integrated PBPK Model [Software]. The University of Adelaide. Available at: https://github.com/\<your-username\>/QSP_NSCLC_Oscimertinib
+> Shin S. (2026). Osimertinib Integrated PBPK Model [Software]. The University of Adelaide. Available at: https://github.com/\<your-username\>/QSP_NSCLC_Oscimertinib
 
 ---
 
